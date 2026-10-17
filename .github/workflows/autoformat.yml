@@ -1,27 +1,22 @@
 name: "Autoformat using Black & isort"
-
 on: [workflow_dispatch, push]
-
 jobs:
   autoformat:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v1
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.8
-
+          python-version: "3.11"
       - name: Install pip modules
         run: pip install black isort
-
-      - name: Run isort 
+      - name: Run isort
         run: isort .
-
-      - name: Run Black 
+      - name: Run Black
         run: black .
-
       - name: Commit and push changes
         run: |
           git config user.name github-actions
