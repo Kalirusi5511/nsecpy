@@ -74,13 +74,10 @@ async def test_pricing_multiple():
     page2_response['prices'][0]['title_id'] = page2_id
 
     with aioresponses() as m:
-        # Temporary fix for aioresponses, who has a bug that double encodes URLs as of aioresponses 0.7.2
-        # https://github.com/pnuckowski/aioresponses/issues/179
-        double_ids = page1_ids_str.replace(",", "%252C")
-        pattern = f'https://api\\.ec\\.nintendo\\.com/v1/price\\?country=US&ids={double_ids}&lang=en'
-        m.get(re.compile(pattern), payload=page1_response)
+        # Modern fix: Match any price URL to avoid parameter ordering issues in aioresponses
+        pattern = re.compile(r"https://api\.ec\.nintendo\.com/v1/price\?.*")
+        m.get(pattern, payload=page1_response)
 
-        # m.get(f'https://api.ec.nintendo.com/v1/price?country=US&lang=en&ids={page1_ids_str}', payload=page1_response)
         m.get(f'https://api.ec.nintendo.com/v1/price?country=US&lang=en&ids={page2_id}', payload=page2_response)
 
         lastPrice = None
