@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import Generator, List, Literal, Optional, Union, AsyncGenerator
+from typing import AsyncGenerator, Generator, List, Literal, Optional, Union
 
 from .listing import Game, query_listing
 from .pricing import PriceQuery, query_price, query_prices
@@ -42,16 +42,16 @@ regions_list = [
     Region('es_AR', 'Argentina', netinfo_TZ="America/Argentina/Buenos_Aires", supports_listing=False),
     Region('es_CL', 'Chile', netinfo_TZ="America/Santiago", supports_listing=False),
     Region('es_PE', 'Perú', netinfo_TZ="America/Lima", supports_listing=False),
-    
     # -------- Asia Pacific --------
     Region('ja_JP', 'Japan', netinfo_TZ="Asia/Tokyo"),
     Region('ko_KR', 'Korea', netinfo_TZ="Asia/Seoul"),
-    Region('zh_CN', 'China Mainland (Tencent)', netinfo_TZ="Asia/Shanghai", supports_listing=False, supports_pricing=False),
+    Region(
+        'zh_CN', 'China Mainland (Tencent)', netinfo_TZ="Asia/Shanghai", supports_listing=False, supports_pricing=False
+    ),
     Region('zh_TW', 'Taiwan', netinfo_TZ="Asia/Taipei", supports_listing=False, supports_pricing=False),
     Region('zh_HK', 'Hong Kong', netinfo_TZ="Asia/Hong_Kong"),
     Region('en_AU', 'Australia', netinfo_TZ="Australia/Sydney"),
     Region('en_NZ', 'New Zealand', netinfo_TZ="Pacific/Auckland"),
-    
     # -------- Europe, Middle East & Africa --------
     Region('de_AT', 'Austria', netinfo_TZ="Europe/Vienna"),
     Region('nl_BE', 'België (Dutch)', netinfo_TZ="Europe/Brussels"),

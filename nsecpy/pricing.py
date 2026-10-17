@@ -8,7 +8,6 @@ import dateparser
 
 from .exceptions import UnsupportedRegionError
 
-
 MAX_PRICES = 50  # Maximum prices per query
 
 if TYPE_CHECKING:

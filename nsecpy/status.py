@@ -8,7 +8,6 @@ import dateparser
 
 from .exceptions import UnsupportedRegionError
 
-
 if TYPE_CHECKING:
     from .regions import Region  # pragma: no cover
 

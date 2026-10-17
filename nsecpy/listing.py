@@ -8,7 +8,6 @@ import dateparser
 from .exceptions import UnsupportedRegionError
 from .pricing import PriceQuery, query_price
 
-
 COUNT = 30  # Items per page of paginated response
 
 if TYPE_CHECKING:
